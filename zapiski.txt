@@ -1,0 +1,107 @@
+PORADY TOMUSIA
+
+SPIS TREŒCI
+A: LINUX
+B: ARM
+--------------------------------------------------------------------------------
+A01: 2017-02-19: LOKALNE REPOZYTORIUM Z PLIKÓW ISO
+Poni¿sz¹ procedurê mo¿na zastosowaæ do wiêcej ni¿ 1 obrazu.
+ród³o: http://askubuntu.com/questions/4694/how-to-use-a-iso-image-as-a-cd-rom-repository
+Here are the steps.
+1) Assume you have the iso file in /home/iso-files/ folder. 
+I had the debian-7.1.0-amd64-DVD-1.iso in /home/iso-files folder
+2) Make a new folder in /media
+mkdir /media/dvd1-mountpoint
+you will have to run the above command as root
+3) Run the following command as root
+mount /home/*yourUsername*/iso-files/debian-7.1.0-amd64-DVD-1.iso /media/dvd1-mountpoint -o loop 
+4) Add an entry to /etc/fstab as follows
+/home/*yourUsername*/iso-files/debian-7.1.0-amd64-DVD-1.iso /media/dvd1-mountpoint iso9660 loop,ro,user,noauto 0        0
+5) Make an entry in your /etc/apt/sources.list as follows
+deb file:/media/dvd1-mountpoint/ wheezy main contrib
+6) Comment out everything else in /etc/apt/sources.list by adding a # at the start of every entry. only the above line should be uncommented.
+7) Run the following command as root
+apt-get update
+8) Install any package name and now it should work.
+apt-get install somePackage
+9) You can check if your entry in fstab is correct or not by unmounting the dvd and then directly mounting the mountpoint
+umount /media/dvd1-mountpoint
+mount /meida/dvd1-mountpoint
+10) If you plan to automount the dvd at start up you should remove user,noauto from entry in /etc/fstab
+The above steps are working just perfectly for me. It should work for you also! I know I am pretty late to answer you, but anyways!
+--------------------------------------------------------------------------------
+A02: 2017-02-19 INSTALACJA JAVY
+ród³o: http://www.webupd8.org/2014/03/how-to-install-oracle-java-8-in-debian.html
+Odinstalowaæ wczeœniejsze wersje.
+
+su -
+echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee /etc/apt/sources.list.d/webupd8team-java.list
+echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
+apt-get update
+apt-get install oracle-java8-installer
+exit
+
+Sprawdzenie aktualnej wersji: java -version
+
+A03: 2017-02-19 ECLIPSE
+W repozytorium Debian 8.7.1 jest stara wersja Eclipse - 3.8. 
+¯eby uruchomiæ np. Neon trzeba zaktualizowaæ Javê do wersji 8 czyli 1.8 - patrz: 002.
+Jeœli przy starcie pojawia siê komunikat o b³êdzie to usun¹æ folder workspace z /home/uzytkownik.
+--------------------------------------------------------------------------------
+B01: TOOLCHAIN NR 1
+Na podstawie: https://www.youtube.com/watch?v=KNqBywNwbj0
+W pliku scripts/interface/stlink-v2.cfg jest:
+hla_vid_pid 0x0483 0x3748 powinno byæ:
+hla_vid_pid 0x0483 0x374B
+Dotyczy to tylko sytuacji, gdy u¿ywa siê JTAGA ST-Link. Zawarty jest na p³ytce STM32 Discovery.
+--------------------------------------------------------------------------------
+A04: SSH
+- Aby by³a mo¿liwoœæ logowania siê do zdalnego systemu za pomoc¹ kluczy nale¿y:
+1. Wygenerowaæ je - za pomoc¹ puttygen (win) lub ssh-keygen (linux)
+2. Jeœli klucz zosta³ wygenerowany puttygen to usuwamy 2 pierwsze i ostatni¹ liniê
+z pliku z kluczem, ³¹czymy wszystkie wiersze ze sob¹ z jedn¹ liniê, dopisaæ na pocz¹tku ssh-rsa.
+3. Klucz publiczny kopiujemy do /home/uzyt/.ssh/authorized_keys na serwer.
+4. Ustawiamy SSH->Auth->Nazwa klucza prywatnego
+5. Logujemy siê wpisuj¹æ jako Host Name: uzyt@adres - nie trzeba bêdzie wpisywaæ nazwy u¿ytkownika.
+6. Jeœli klucze wygenerowaliœmy na serwerze z linuxem to klucz publiczny nale¿y skopiowaæ z id_rsa.pub
+do authorized_keys a klucz prywatny na komputer z którego siê bêdziemy logowaæ. 
+7. Puttygen->Load i zapisaæ (Save private key) z rozszerzeniem ppk. Powoduje to skonwertowanie klucza
+na rodzaj strawny dla putty. Bez konwersji przy próbie logowania wyst¹pi b³¹d: server refused our key.
+8. Dodatkowo mo¿na zabezpieczyæ klucz has³em (passphase). ¯eby przy ka¿dym logowaniu nie podawaæ has³a
+do klucza u¿yæ Pageant. Dodaæ do niego klucz prywatny i ju¿! Przy ponownym uruchomieniu Pageant nale¿y
+ponownie dodaæ klucz.   
+9. SSH pomiêdzy linux<->linux dzia³a bez problemów.
+10. Bardzo wygodne kopiowanie plików: pscp i psftp, np. z Windows na Linuksa:
+pscp d:\summary-1.0.0.tar.gz tomek@192.168.50.163:/home/tomek
+--------------------------------------------------------------------------------
+A05: ARCHIWIZACJA
+Za pomoc¹ jednego polecania tar:
+-c pakowanie 
+-x rozpakowanie
+-z typ archiwum: zip
+-J typ archiuwm: xz
+-j typ archiwum: bzip2
+-f nazwa pliku archiwum
+-t podgl¹d zaw. archiwum
+-v wypisuje nazwy przy pakowaniu/rozpakowaniu
+
+Pakowanie:
+tar -czvf test.tar.gz test/
+Rozpakowanie do bie¿¹cego folderu:
+tar -xzvf test.tar.gz
+Rozpakowanie do wskazanego folderu:
+tar -xzvf test.tar.gz -C /folder
+
+Za pomoc¹ tar i...
+Tworzenie archiwum tar:
+tar -cvf test.tar
+Pakowanie:
+gzip test.tar
+Rozpakowanie test.tar.gz do test.tar:
+gunzip test.tar.gz
+Rozpakowanie test.tar:
+tar -xvf test.tar 
+-------------------------------------------------------------------------------
+A06: STRUKTURY C
+Patrz: Mikrokontrolery AT91SAM7 w przyk³adach s. 38.
