@@ -128,3 +128,5 @@ W katalogu użytkownika:
 A08: KODOWANIE
 Aby poprawnie wyświetlać pliki tekstowe pod Win/Linux ustawić kodowanie UTF-8.
 -------------------------------------------------------------------------------
+A09: Matthew - Zaawansowane programowanie w Linuxie.rar
+Stacja bezdyskowa, sterowniki jądra, autoconf
