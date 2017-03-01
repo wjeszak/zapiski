@@ -127,3 +127,4 @@ W katalogu użytkownika:
 -------------------------------------------------------------------------------
 A08: KODOWANIE
 Aby poprawnie wyświetlać pliki tekstowe pod Win/Linux ustawić kodowanie UTF-8.
+-------------------------------------------------------------------------------
