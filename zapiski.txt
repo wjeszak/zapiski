@@ -130,3 +130,6 @@ Aby poprawnie wyświetlać pliki tekstowe pod Win/Linux ustawić kodowanie UTF-8
 -------------------------------------------------------------------------------
 A09: Matthew - Zaawansowane programowanie w Linuxie.rar
 Stacja bezdyskowa, sterowniki jądra, autoconf
+
+A10: WYSZUKIWANIE
+find [katalog] -name "nazwa"
