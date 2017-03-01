@@ -5,7 +5,7 @@ A: LINUX
 B: ARM
 --------------------------------------------------------------------------------
 A01: 2017-02-19: LOKALNE REPOZYTORIUM Z PLIK”W ISO
-Poniøszπ procedurÍ moøna zastosowaÊ do wiÍcej niø 1 obrazu.
+Poni≈ºszπ procedurÍ moøna zastosowaÊ do wiÍcej niø 1 obrazu.
 èrÛd≥o: http://askubuntu.com/questions/4694/how-to-use-a-iso-image-as-a-cd-rom-repository
 Here are the steps.
 1) Assume you have the iso file in /home/iso-files/ folder. 
