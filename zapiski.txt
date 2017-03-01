@@ -124,4 +124,6 @@ W katalogu użytkownika:
 9. git remote add origin git@github.com:uzytkownik/projekt.git
 10. git push -u origin master - repozytorium zostanie wysłane do github.com
 11. Jeśli zmiana nastąpiła z poziomu github to wywołać: git pull -u origin master
-
+-------------------------------------------------------------------------------
+A08: KODOWANIE
+Aby poprawnie wyświetlać pliki tekstowe pod Win/Linux ustawić kodowanie UTF-8.
