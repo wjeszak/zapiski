@@ -102,7 +102,25 @@ Rozpakowanie test.tar.gz do test.tar:
 gunzip test.tar.gz
 Rozpakowanie test.tar:
 tar -xvf test.tar 
--------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 A06: STRUKTURY C
 Patrz: Mikrokontrolery AT91SAM7 w przykładach s. 38.
+-------------------------------------------------------------------------------
+A07: NOWE REPOZYTORIUM
+git config --global user.name "Imię i nazwisko"
+git config --global user.email "adres@email.pl"
+git config --global color.status auto
+git config --global color.branch auto
 
+W katalogu użytkownika:
+1. $ mkdir projekt; cd projekt
+2. Utworzyć początkową wersję repozytorium, tzn. skopiować pliki projektu
+3. git init; git add . - utworzy repozytorium i doda pliki do poczekalni
+4. git commit -am "Komentarz" - doda pliki do repozytorium
+5. Załozyć konto na github.com
+6. Wygenerować klucze SSH, dodać klucz publiczny do github
+7. Sprawdzić połączenie: ssh -T git@github.com
+8. Stworzyć repozytorum projekt
+9. git remote add origin git@github.com:uzytkownik/projekt.git
+10. git push -u origin master
+Repozytorium zostanie wysłane do github.com
