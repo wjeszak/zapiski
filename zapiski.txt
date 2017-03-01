@@ -1,4 +1,4 @@
-﻿PORADY TOMUSIA
+ZAPISKI
 
 SPIS TREŚCI
 A: LINUX
@@ -102,6 +102,7 @@ Rozpakowanie test.tar.gz do test.tar:
 gunzip test.tar.gz
 Rozpakowanie test.tar:
 tar -xvf test.tar 
--------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
 A06: STRUKTURY C
 Patrz: Mikrokontrolery AT91SAM7 w przykładach s. 38.
+
