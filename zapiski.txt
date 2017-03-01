@@ -122,5 +122,6 @@ W katalogu użytkownika:
 7. Sprawdzić połączenie: ssh -T git@github.com
 8. Stworzyć repozytorum projekt
 9. git remote add origin git@github.com:uzytkownik/projekt.git
-10. git push -u origin master
-Repozytorium zostanie wysłane do github.com.
+10. git push -u origin master - repozytorium zostanie wysłane do github.com
+11. Jeśli zmiana nastąpiła z poziomu github to wywołać: git pull -u origin master
+
