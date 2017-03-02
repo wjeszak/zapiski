@@ -148,3 +148,13 @@ mowa w README (chyba nie).
 2. szary ISP Cable III jest wykrywany jako urządzenie /dev/ttyUSB0
 W zależności od programatora ustawić w avrdude.conf parametr default_serial.
 Wywołanie: avrdude -c stk500v2 -m m128 lub inny uC
+
+A13: PRZEWIJANIE NA BIEŻĄCE NP. LOGU
+tail -f plik
+
+A14: BAZA USB ID
+the-sz.com
+
+A15:
+Odnośnie gcc i skryptów linkera -> dokumentacja do avr-libc, TFrancuz
+Patrz rep. avr-asm -> napisać obsługę timera i uarta
