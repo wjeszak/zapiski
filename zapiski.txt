@@ -133,3 +133,18 @@ Stacja bezdyskowa, sterowniki jądra, autoconf
 
 A10: WYSZUKIWANIE
 find [katalog] -name "nazwa"
+
+A11: LISTY URZĄDZEŃ
+USB:
+usb-devices
+lsusb
+BLOKOWE:
+lsblk
+
+A12: PROGRAMATORY AVR I AVRDUDE
+1. Skompilować ze źródeł. Nie wiem czy są potrzebne biblioteki o których
+mowa w README (chyba nie).
+1. srebrny AND-TECH jest wykrywany jako urządzenie /dev/ttyACM0
+2. szary ISP Cable III jest wykrywany jako urządzenie /dev/ttyUSB0
+W zależności od programatora ustawić w avrdude.conf parametr default_serial.
+Wywołanie: avrdude -c stk500v2 -m m128 lub inny uC
