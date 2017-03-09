@@ -158,3 +158,34 @@ the-sz.com
 A15:
 Odnośnie gcc i skryptów linkera -> dokumentacja do avr-libc, TFrancuz
 Patrz rep. avr-asm -> napisać obsługę timera i uarta
+
+A16: INSTALACJA POJEDYNCZEGO PAKIETU
+dpkg -i [nazwa.deb]
+
+A17: UPRAWNIENIA DO USB
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="1781", ATTRS{idProduct}=="0c9f", GROUP="users", MODE="0660"
+https://wiki.archlinux.org/index.php/udev
+udevadm control --reload
+Można wyrzucić zapis GROUP... i dać MODE="0666" tak po szatańsku.
+
+A18 AVR BURN O MAT:
+Jeśli w ustawieniach fusebit jest na zaznaczony na czerwono to przejść
+w tryb expert.
+
+A19 INSIGHT, DDD AVR:
+Insight: Nie chce się kompilować. Nie wiem dlaczego, olałem.
+Zamiast tego DDD. Trochę toporny.
+Stworzyć np. gdb.conf:
+"filename test.elf
+target remote localhost:4242"
+i zapisać w folderze z avr-gdb
+ddd --debugger "avr-gdb -x gdb.conf"
+
+A20 AVARICE
+To odpowiednik OpenOCD dla ARM, tzn interfejs JTAG<->GDB
+Uruchomienie: avarice -j [urzadzenie]
+Uruchomienie jako serwer: avarice -j [urzadzenie]:[port]
+
+A21 KONFIGURACJA WIFI W DEBIAN
+1. Wyłączyć Network Manager: /etc/init.d/network-manager stop, chmod 600 /etc/init.d/network-manager
+2. Postępować wg: https://wiki.debian.org/WiFi/HowToUse
