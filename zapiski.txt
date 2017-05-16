@@ -1,4 +1,4 @@
-ZAPISKI
+﻿ZAPISKI
 
 SPIS TREŚCI
 A: LINUX
@@ -189,3 +189,19 @@ Uruchomienie jako serwer: avarice -j [urzadzenie]:[port]
 A21 KONFIGURACJA WIFI W DEBIAN
 1. Wyłączyć Network Manager: /etc/init.d/network-manager stop, chmod 600 /etc/init.d/network-manager
 2. Postępować wg: https://wiki.debian.org/WiFi/HowToUse
+
+A22: OBSŁUGA RS232
+minicom, cutecom 
+
+A23: DODANIE UŻYTKOWNIKA DO GRUPY
+sudo usermod -G [grupa] [uzytkownik]
+
+A24: UPRAWNIENIA DOSTĘPU DO SPRZĘTU
+http://ask.xmodulo.com/change-usb-device-permission-linux.html
+1. lsusb: znaleźć sprzęt 
+2. sudo vi /etc/udev/rules.d/50-myusb.rules
+3. SUBSYSTEMS=="usb", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", GROUP="users", MODE="0666"
+4. sudo udevadm control --reload
+
+A25: ECLIPSE + DOXYGEN
+https://github.com/theolind/mahm3lib/wiki/Integrating-Doxygen-with-Eclipse
